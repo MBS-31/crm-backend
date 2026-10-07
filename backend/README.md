@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CRM Backend API
 
-## Getting Started
+This directory contains the backend for the AI-Native CRM Platform, built with **Next.js 15 (App Router)** and **PostgreSQL**.
 
-First, run the development server:
+## 🏗 Architecture Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The backend uses a modernized Next.js API route structure mapped to standard REST endpoints. 
+- **API Routes**: Located in `src/app/api/v1/`
+- **Data Access Layer**: `src/services/` contains modularized logic for handling requests, which interfaces with the database or mock data layer.
+- **Domain Models**: Types and interfaces are defined in `src/types/index.ts`.
+- **Database**: PostgreSQL 16 schema and docker configurations are located in `database/`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Running the API Locally
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Start the Database**
+   ```bash
+   cd database
+   docker compose up -d
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Start the API Server**
+   ```bash
+   # From the `backend` folder
+   npm install
+   npm run dev
+   ```
+   The API will be available at `http://localhost:3000/api/v1`.
 
-## Learn More
+## 📡 API Modules & Endpoints
 
-To learn more about Next.js, take a look at the following resources:
+| Module | Endpoints | Description |
+|---|---|---|
+| **Auth** | `/auth/me`, `/auth/organizations` | User identity and tenant switching |
+| **Customers** | `/customers`, `/customers/:id` | Enterprise accounts and health metrics |
+| **Leads** | `/leads`, `/leads/:id` | Lead pipeline and AI scoring |
+| **Deals** | `/deals`, `/deals/:id`, `/deals/:id/stage` | Commercial deal progression |
+| **Calls** | `/calls/start`, `/calls/latest` | WebRTC endpoints and call transcripts |
+| **Inbox** | `/inbox/conversations`, `/inbox/ai-reply` | Unified messaging hub and AI drafting |
+| **AI Agents** | `/agent/plan`, `/agent/execute` | Autonomous decision execution |
+| **Workflows** | `/workflows`, `/workflows/:id/simulate` | Visual automation node processing |
+| **Radar** | `/radar/metrics` | Proactive anomaly detection |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 Postman Collection
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+A full, pre-configured Postman collection is included for immediate testing:
+- **File**: `crm-backend.postman_collection.json`
+- **Usage**: Import into Postman. It contains pre-configured requests for all 34 endpoints and uses a `{{baseUrl}}` variable defaulting to `http://localhost:3000/api/v1`.
 
-## Deploy on Vercel
+## 🗄️ Database Documentation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Please see the dedicated database documentation at [`database/README.md`](database/README.md) for details on the 20 relational tables, constraints, and initial seed data.
