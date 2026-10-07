@@ -27,8 +27,11 @@ import GlobalSearchModal from './components/GlobalSearchModal';
 import WebRtcDialerModal from './components/WebRtcDialerModal';
 import CrmBenchmarkModal from './components/CrmBenchmarkModal';
 import gsap from 'gsap';
+import { useLandingStore } from './store/useLandingStore';
+import HomePage from './app/page';
 
 export default function App() {
+  const { currentView, setCurrentView } = useLandingStore();
   const { 
     activeTab, 
     currentRole, 
@@ -42,6 +45,11 @@ export default function App() {
   const leftColRef = useRef(null);
   const centerColRef = useRef(null);
   const rightColRef = useRef(null);
+
+  // If user is on landing page view, show OpenCRM Homepage first!
+  if (currentView === 'landing') {
+    return <HomePage />;
+  }
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -71,6 +79,25 @@ export default function App() {
 
   return (
     <div className="w-full min-h-screen bg-white flex flex-col">
+      {/* Top Banner Navigation back to Homepage */}
+      <div className="sticky top-0 z-50 bg-[#070913] text-white px-4 py-2 flex items-center justify-between border-b border-white/10 text-xs shadow-md">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setCurrentView('landing')}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-colors cursor-pointer"
+          >
+            <span>← Back to OpenCRM Homepage</span>
+          </button>
+          <span className="text-slate-400 hidden sm:inline">
+            You are exploring the live enterprise CRM dashboard
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span className="font-mono text-emerald-400 text-[11px]">LIVE DEMO ACTIVE</span>
+        </div>
+      </div>
+
       {/* Top Navigation Bar */}
       <TopNavbar />
 

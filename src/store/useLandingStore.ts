@@ -2,8 +2,11 @@ import { create } from 'zustand';
 
 export type RoleType = 'SUPER_ADMIN' | 'ADMIN' | 'MANAGER' | 'SALES_EXECUTIVE' | 'SUPPORT_USER';
 export type ChannelType = 'ALL' | 'EMAIL' | 'WHATSAPP' | 'VOICE' | 'SMS';
+export type ViewType = 'landing' | 'dashboard';
 
 interface LandingState {
+  currentView: ViewType;
+  setCurrentView: (view: ViewType) => void;
   mobileNavOpen: boolean;
   setMobileNavOpen: (open: boolean) => void;
   activeRbacRole: RoleType;
@@ -17,6 +20,8 @@ interface LandingState {
 }
 
 export const useLandingStore = create<LandingState>((set) => ({
+  currentView: 'landing', // Always open homepage first!
+  setCurrentView: (view) => set({ currentView: view }),
   mobileNavOpen: false,
   setMobileNavOpen: (open) => set({ mobileNavOpen: open }),
   activeRbacRole: 'MANAGER',

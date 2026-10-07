@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import Link from "./CustomLink";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Terminal, 
@@ -16,11 +16,11 @@ import {
   Sparkles
 } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
-import { useLandingStore } from "@/store/useLandingStore";
+import { useLandingStore } from "../../store/useLandingStore";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const { mobileNavOpen, setMobileNavOpen, setDemoModalOpen } = useLandingStore();
+  const { mobileNavOpen, setMobileNavOpen, setDemoModalOpen, setCurrentView } = useLandingStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -116,6 +116,7 @@ export default function Navbar() {
 
             <Link
               href="/dashboard"
+              onClick={() => setCurrentView('dashboard')}
               className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 rounded-lg transition-all duration-200 shadow-md shadow-indigo-950/50 hover:shadow-indigo-500/25 hover:-translate-y-0.5"
             >
               <Sparkles className="w-3.5 h-3.5 text-blue-200" />
@@ -135,6 +136,7 @@ export default function Navbar() {
           <div className="flex lg:hidden items-center gap-2">
             <Link
               href="/dashboard"
+              onClick={() => setCurrentView('dashboard')}
               className="px-3 py-1.5 text-xs font-bold text-white bg-blue-600 rounded-lg shadow-md"
             >
               Dashboard →

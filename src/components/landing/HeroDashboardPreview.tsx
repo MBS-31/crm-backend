@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
+import Link from "./CustomLink";
 import { motion } from "framer-motion";
 import {
   DollarSign,
@@ -26,10 +26,12 @@ import {
   Bot,
   Play,
   Clock,
-  CheckCircle2
+  CheckCircle2,
 } from "lucide-react";
+import { useLandingStore } from "../../store/useLandingStore";
 
 export default function HeroDashboardPreview() {
+  const { setCurrentView } = useLandingStore();
   const [activeTab, setActiveTab] = useState("Deals");
   const [audioPlaying, setAudioPlaying] = useState(true);
 
@@ -50,6 +52,7 @@ export default function HeroDashboardPreview() {
         <div className="flex items-center gap-2">
           <Link
             href="/dashboard"
+            onClick={() => setCurrentView('dashboard')}
             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white shadow-md transition-all hover:scale-105"
           >
             <span>Enter Live Dashboard</span>

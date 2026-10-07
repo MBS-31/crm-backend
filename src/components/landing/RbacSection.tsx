@@ -16,7 +16,7 @@ import {
   FileCheck2,
   KeyRound
 } from "lucide-react";
-import { useLandingStore, RoleType } from "@/store/useLandingStore";
+import { useLandingStore, RoleType } from "../../store/useLandingStore";
 
 export default function RbacSection() {
   const { activeRbacRole, setActiveRbacRole } = useLandingStore();

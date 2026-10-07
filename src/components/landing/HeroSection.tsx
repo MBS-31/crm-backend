@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import Link from "./CustomLink";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -17,10 +17,10 @@ import {
 } from "lucide-react";
 import { GithubIcon } from "./BrandIcons";
 import HeroDashboardPreview from "./HeroDashboardPreview";
-import { useLandingStore } from "@/store/useLandingStore";
+import { useLandingStore } from "../../store/useLandingStore";
 
 export default function HeroSection() {
-  const { setDemoModalOpen } = useLandingStore();
+  const { setDemoModalOpen, setCurrentView } = useLandingStore();
 
   return (
     <section className="relative pt-28 sm:pt-36 pb-20 md:pb-28 overflow-hidden bg-grid-pattern">
@@ -86,6 +86,7 @@ export default function HeroSection() {
           >
             <Link
               href="/dashboard"
+              onClick={() => setCurrentView('dashboard')}
               className="px-7 py-3.5 text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 rounded-xl hover:shadow-2xl hover:shadow-indigo-500/40 transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2 group shadow-xl"
             >
               <Sparkles className="w-4 h-4 text-blue-200" />
