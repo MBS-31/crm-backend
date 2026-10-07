@@ -115,29 +115,29 @@ export default function Navbar() {
             </a>
 
             <Link
-              href="/demo"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-blue-300 hover:text-blue-200 bg-blue-500/10 hover:bg-blue-500/15 rounded-lg transition-colors border border-blue-500/20"
+              href="/dashboard"
+              className="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:to-violet-500 rounded-lg transition-all duration-200 shadow-md shadow-indigo-950/50 hover:shadow-indigo-500/25 hover:-translate-y-0.5"
             >
-              <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-              Live Demo
+              <Sparkles className="w-3.5 h-3.5 text-blue-200" />
+              <span>Launch Dashboard</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
             <a
               href="#deployment"
-              className="relative inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+              className="relative inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-200 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.1] rounded-lg transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
             >
               Deploy Locally
-              <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
 
           {/* Mobile menu toggle */}
           <div className="flex lg:hidden items-center gap-2">
             <Link
-              href="/demo"
-              className="px-2.5 py-1.5 text-xs font-medium text-blue-300 bg-blue-500/10 rounded-lg border border-blue-500/20"
+              href="/dashboard"
+              className="px-3 py-1.5 text-xs font-bold text-white bg-blue-600 rounded-lg shadow-md"
             >
-              Demo
+              Dashboard →
             </Link>
             <button
               onClick={() => setMobileNavOpen(!mobileNavOpen)}

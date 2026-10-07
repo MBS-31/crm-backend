@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Terminal,
@@ -57,13 +58,21 @@ export default function FinalCtaSection() {
 
         {/* Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="/dashboard"
+            className="px-7 py-3.5 text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 rounded-xl hover:shadow-2xl hover:shadow-indigo-500/40 transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2 group shadow-xl"
+          >
+            <Sparkles className="w-4 h-4 text-blue-200" />
+            Launch Live Dashboard
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+
           <a
             href="#deployment"
-            className="px-6 py-3.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 rounded-xl hover:shadow-2xl hover:shadow-indigo-500/40 transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2 group shadow-lg"
+            className="px-6 py-3.5 text-sm font-semibold text-slate-200 bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] rounded-xl transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2"
           >
-            <Terminal className="w-4 h-4 text-blue-200" />
+            <Terminal className="w-4 h-4 text-blue-300" />
             Deploy Locally
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </a>
 
           <button

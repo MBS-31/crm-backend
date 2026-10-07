@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -83,20 +84,28 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 mb-8"
           >
+            <Link
+              href="/dashboard"
+              className="px-7 py-3.5 text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 rounded-xl hover:shadow-2xl hover:shadow-indigo-500/40 transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2 group shadow-xl"
+            >
+              <Sparkles className="w-4 h-4 text-blue-200" />
+              Open Live Dashboard
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+
             <a
               href="#deployment"
-              className="px-6 py-3.5 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 rounded-xl hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2 group"
+              className="px-5 py-3.5 text-sm font-semibold text-slate-200 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.1] rounded-xl transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2"
             >
-              <Terminal className="w-4 h-4 text-blue-200 group-hover:rotate-6 transition-transform" />
+              <Terminal className="w-4 h-4 text-blue-200" />
               Deploy Locally
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </a>
 
             <a
               href="https://github.com/code-with-dipak-777/CRM-ROBLEM-SOLVE"
               target="_blank"
               rel="noreferrer"
-              className="px-6 py-3.5 text-sm font-semibold text-slate-200 bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.1] rounded-xl transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2"
+              className="px-5 py-3.5 text-sm font-semibold text-slate-300 hover:text-white bg-transparent hover:bg-white/[0.04] border border-white/[0.08] rounded-xl transition-all duration-200 inline-flex items-center gap-2"
             >
               <GithubIcon className="w-4 h-4" />
               Explore GitHub
@@ -104,10 +113,9 @@ export default function HeroSection() {
 
             <a
               href="#architecture"
-              className="px-4 py-3.5 text-sm font-medium text-slate-400 hover:text-white transition-colors inline-flex items-center gap-1 group"
+              className="px-3 py-3.5 text-sm font-medium text-slate-400 hover:text-white transition-colors inline-flex items-center gap-1 group hidden sm:inline-flex"
             >
-              View Architecture
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              Architecture →
             </a>
           </motion.div>
 

@@ -3,9 +3,9 @@
 import React from "react";
 import App from "@/App";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Home } from "lucide-react";
 
-export default function DemoPage() {
+export default function DashboardPage() {
   return (
     <div className="relative min-h-screen bg-slate-50">
       {/* Top Banner Navigation back to Homepage */}
