@@ -6,8 +6,6 @@ import Sidebar from './components/Sidebar';
 import StatsRow from './components/StatsRow';
 import PerformanceChart from './components/PerformanceChart';
 import CurrentTasks from './components/CurrentTasks';
-import ProfileCard from './components/ProfileCard';
-import ActivityFeed from './components/ActivityFeed';
 import AiExecutiveBrief from './components/AiExecutiveBrief';
 import OpportunityRadar from './components/OpportunityRadar';
 import Customer360View from './components/Customer360View';
@@ -41,7 +39,6 @@ export default function App() {
 
   const leftColRef = useRef(null);
   const centerColRef = useRef(null);
-  const rightColRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -56,12 +53,6 @@ export default function App() {
           centerColRef.current,
           { opacity: 0, y: 10 },
           { opacity: 1, y: 0, duration: 0.4 },
-          '-=0.2'
-        )
-        .fromTo(
-          rightColRef.current,
-          { opacity: 0, x: 15 },
-          { opacity: 1, x: 0, duration: 0.4 },
           '-=0.2'
         );
     });
@@ -154,17 +145,7 @@ export default function App() {
           {activeTab === 'infra' && <DockerInfraStatus />}
         </div>
 
-        {/* Right Column: Profile & Live Customer Timeline */}
-        <div
-          ref={rightColRef}
-          className="w-full lg:w-[310px] xl:w-[335px] flex-shrink-0 flex flex-col border-t lg:border-t-0 lg:border-l border-slate-100 p-4 sm:p-5 lg:p-6 justify-between"
-        >
-          {/* Megan Norton Profile Card */}
-          <ProfileCard />
 
-          {/* Activity Feed & Live Customer Stream */}
-          <ActivityFeed />
-        </div>
       </div>
 
       {/* Global AI Copilot Slide-Over */}
