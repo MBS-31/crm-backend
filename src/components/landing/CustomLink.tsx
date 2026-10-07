@@ -13,6 +13,10 @@ export default function Link({ href, children, className, onClick, ...props }: C
       href={href}
       className={className}
       onClick={(e) => {
+        // Dashboard links toggle the view client-side — no full reload
+        if (onClick && (href === "/dashboard" || href === "/demo")) {
+          e.preventDefault();
+        }
         if (onClick) {
           onClick(e);
         }

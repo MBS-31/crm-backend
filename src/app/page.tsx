@@ -15,11 +15,15 @@ import FinalCtaSection from "../components/landing/FinalCtaSection";
 import Footer from "../components/landing/Footer";
 import ContactDemoModal from "../components/landing/ContactDemoModal";
 import { useLandingStore } from "../store/useLandingStore";
-import App from "../App";
+import CrmDashboard from "../CrmDashboard";
 import { ArrowLeft } from "lucide-react";
 
 export default function HomePage() {
   const { currentView, setCurrentView } = useLandingStore();
+
+  React.useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [currentView]);
 
   // If user clicked Launch Dashboard, transition directly to the Dashboard!
   if (currentView === "dashboard") {
@@ -45,7 +49,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <App />
+        <CrmDashboard />
       </div>
     );
   }

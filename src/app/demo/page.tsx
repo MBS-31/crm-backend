@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import App from "../../App";
+import App from "../../CrmDashboard";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
