@@ -3,7 +3,7 @@ import { create } from 'zustand';
 export const useCrmStore = create((set, get) => ({
   // Navigation & View
   activeTab: 'dashboard',
-  setActiveTab: (tab) => set({ activeTab: tab }),
+  setActiveTab: (tab) => set({ activeTab: tab, isCopilotOpen: false }),
 
   // Multi-Tenant Org
   currentOrg: 'Acme Enterprise Corp',
@@ -30,11 +30,11 @@ export const useCrmStore = create((set, get) => ({
 
   // Active Customer for Customer 360 View
   activeCustomerId: 'cust-1',
-  setActiveCustomer: (id) => set({ activeCustomerId: id, activeTab: 'customer360' }),
+  setActiveCustomer: (id) => set({ activeCustomerId: id, activeTab: 'customer360', isCopilotOpen: false }),
 
   // Selected Lead for Lead Intelligence
   activeLeadId: 'lead-1',
-  setActiveLead: (id) => set({ activeLeadId: id, activeTab: 'leads' }),
+  setActiveLead: (id) => set({ activeLeadId: id, activeTab: 'leads', isCopilotOpen: false }),
 
   // Global Notifications Count
   notificationsCount: 5,

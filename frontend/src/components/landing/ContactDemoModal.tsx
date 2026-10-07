@@ -17,7 +17,7 @@ import {
   Server,
   ArrowRight
 } from "lucide-react";
-import { useLandingStore } from "@/store/useLandingStore";
+import { useLandingStore } from "../../store/useLandingStore";
 
 const demoSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters"),

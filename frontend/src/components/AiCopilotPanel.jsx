@@ -32,7 +32,16 @@ export default function AiCopilotPanel() {
   const [inputVal, setInputVal] = useState('');
   const [copiedId, setCopiedId] = useState(null);
 
-  if (!isCopilotOpen) return null;
+  if (!isCopilotOpen) {
+    return (
+      <button
+        onClick={() => setCopilotOpen(true)}
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 transition-transform border-2 border-white group"
+      >
+        <Sparkles className="w-6 h-6 group-hover:animate-pulse" />
+      </button>
+    );
+  }
 
   const handleSendPrompt = (promptText) => {
     const query = promptText || inputVal;
@@ -93,7 +102,7 @@ export default function AiCopilotPanel() {
   };
 
   return (
-    <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-[480px] bg-white shadow-2xl border-l border-slate-200 flex flex-col">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[90vw] sm:w-[420px] h-[550px] bg-white shadow-2xl border border-slate-200 rounded-2xl flex flex-col overflow-hidden">
       {/* Header */}
       <div className="p-4 px-5 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-slate-900 to-blue-950 text-white">
         <div className="flex items-center gap-2.5">

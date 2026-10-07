@@ -17,7 +17,7 @@ import {
   User,
   ExternalLink
 } from "lucide-react";
-import { useLandingStore, ChannelType } from "@/store/useLandingStore";
+import { useLandingStore, ChannelType } from "../../store/useLandingStore";
 
 export default function OmnichannelSection() {
   const { activeChannel, setActiveChannel } = useLandingStore();

@@ -49,7 +49,6 @@ export default function Sidebar() {
     {
       title: 'AI INTELLIGENCE',
       items: [
-        { id: 'copilot_trigger', label: 'AI Copilot Panel', icon: Bot, isAction: true },
         { id: 'sales_coach', label: 'AI Sales Coach', icon: Award },
         { id: 'simulator', label: 'What-If Simulator', icon: Sliders },
       ],
