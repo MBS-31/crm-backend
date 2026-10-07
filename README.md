@@ -7,6 +7,28 @@ A full-stack AI-native CRM platform combining:
 
 ---
 
+## ✨ Key Features
+
+### 🧠 AI-Native Capabilities
+- **Autonomous AI Agents**: Multi-step AI agent task planning and execution.
+- **AI Executive Brief & Copilot**: Natural language queries on CRM data with AI assistance.
+- **Call Intelligence**: WebRTC dialer with AI sentiment analysis, audio processing, and automated transcriptions.
+- **Smart Drafting**: AI-assisted email/message replies natively in the inbox.
+
+### 🏢 Core CRM Functionality
+- **Customer 360 & Relationship Mapping**: Enterprise account management with health scores and ARR tracking.
+- **Deal Pipeline & Leads**: Multi-stage commercial deal pipeline with churn/risk prediction.
+- **Unified Omni-channel Inbox**: Centralized hub for Emails, SMS, WhatsApp, and calls.
+- **Opportunity Radar**: Proactive anomaly and expansion signal detection.
+
+### ⚙️ Automation & Admin
+- **Visual Workflow Builder**: Interactive drag-and-drop workflow graphs for automated CRM processes.
+- **Sales Rep Coaching**: Quota pacing, strengths mapping, and actionable coaching advice.
+- **Multi-tenant RBAC**: Organization-based data siloing with Enterprise Role-Based Access Control.
+- **Audit Logging**: Immutable system security logs.
+
+---
+
 ## 📁 Repository Structure
 
 ```
