@@ -49,7 +49,7 @@ export default function HomePage() {
 
   // Otherwise, default to the Homepage!
   return (
-    <main className="min-h-screen bg-[#070913] text-slate-100 relative selection:bg-blue-600 selection:text-white">
+    <main className="min-h-screen bg-slate-50 text-slate-900 relative selection:bg-blue-600 selection:text-white">
       {/* Sticky Navigation */}
       <Navbar />
 

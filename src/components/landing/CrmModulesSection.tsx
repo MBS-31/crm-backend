@@ -38,13 +38,13 @@ const LeadsPreview = () => (
       { name: "Priya Nair", co: "BlueOrbit Labs", score: 78, tag: "Warm" },
       { name: "Arjun Mehta", co: "Nimbus Retail", score: 54, tag: "New" },
     ].map((l) => (
-      <div key={l.name} className="flex items-center justify-between p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+      <div key={l.name} className="flex items-center justify-between p-3 rounded-xl bg-white shadow-sm border border-slate-200">
         <div>
-          <p className="text-xs font-semibold text-white">{l.name}</p>
-          <p className="text-[10px] text-slate-400">{l.co}</p>
+          <p className="text-xs font-semibold text-slate-900">{l.name}</p>
+          <p className="text-[10px] text-slate-500">{l.co}</p>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-16 h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+          <div className="w-16 h-1.5 rounded-full bg-slate-200 overflow-hidden">
             <div className="h-full bg-gradient-to-r from-orange-500 to-rose-500" style={{ width: `${l.score}%` }} />
           </div>
           <span className="text-[10px] font-bold text-orange-300 w-8 text-right">{l.score}</span>
@@ -63,13 +63,13 @@ const ContactsPreview = () => (
       { n: "Sara Khan", r: "Ops Manager", c: "from-emerald-500 to-teal-500" },
       { n: "Dev Patel", r: "Founder", c: "from-violet-500 to-indigo-500" },
     ].map((p) => (
-      <div key={p.n} className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center gap-2.5">
-        <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${p.c} flex items-center justify-center text-[10px] font-bold text-white`}>
+      <div key={p.n} className="p-3 rounded-xl bg-white shadow-sm border border-slate-200 flex items-center gap-2.5">
+        <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${p.c} flex items-center justify-center text-[10px] font-bold text-slate-900`}>
           {p.n.split(" ").map((x) => x[0]).join("")}
         </div>
         <div className="min-w-0">
-          <p className="text-xs font-semibold text-white truncate">{p.n}</p>
-          <p className="text-[10px] text-slate-400 truncate">{p.r}</p>
+          <p className="text-xs font-semibold text-slate-900 truncate">{p.n}</p>
+          <p className="text-[10px] text-slate-500 truncate">{p.r}</p>
         </div>
       </div>
     ))}
@@ -83,14 +83,14 @@ const CompaniesPreview = () => (
       { n: "BlueOrbit Labs", i: "SaaS", v: "₹18L", d: 3 },
       { n: "Nimbus Retail", i: "E-commerce", v: "₹27L", d: 4 },
     ].map((c) => (
-      <div key={c.n} className="flex items-center justify-between p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+      <div key={c.n} className="flex items-center justify-between p-3 rounded-xl bg-white shadow-sm border border-slate-200">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
             <Building2 className="w-4 h-4 text-emerald-400" />
           </div>
           <div>
-            <p className="text-xs font-semibold text-white">{c.n}</p>
-            <p className="text-[10px] text-slate-400">{c.i} · {c.d} open deals</p>
+            <p className="text-xs font-semibold text-slate-900">{c.n}</p>
+            <p className="text-[10px] text-slate-500">{c.i} · {c.d} open deals</p>
           </div>
         </div>
         <span className="text-xs font-bold text-emerald-300">{c.v}</span>
@@ -107,12 +107,12 @@ const DocumentsPreview = () => (
       { n: "Signed_Contract_BlueOrbit.pdf", s: "1.1 MB", icon: FileType2, c: "text-rose-400" },
       { n: "Product_Brochure.png", s: "3.2 MB", icon: FileImage, c: "text-sky-400" },
     ].map((f) => (
-      <div key={f.n} className="flex items-center justify-between p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+      <div key={f.n} className="flex items-center justify-between p-3 rounded-xl bg-white shadow-sm border border-slate-200">
         <div className="flex items-center gap-2.5 min-w-0">
           <f.icon className={`w-4 h-4 flex-shrink-0 ${f.c}`} />
-          <p className="text-xs font-medium text-white truncate">{f.n}</p>
+          <p className="text-xs font-medium text-slate-900 truncate">{f.n}</p>
         </div>
-        <span className="text-[10px] text-slate-400 flex-shrink-0">{f.s}</span>
+        <span className="text-[10px] text-slate-500 flex-shrink-0">{f.s}</span>
       </div>
     ))}
   </div>
@@ -128,13 +128,13 @@ const ReportsPreview = () => {
           { k: "Win rate", v: "34%" },
           { k: "New leads", v: "248" },
         ].map((m) => (
-          <div key={m.k} className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-            <p className="text-[10px] text-slate-400">{m.k}</p>
-            <p className="text-sm font-bold text-white">{m.v}</p>
+          <div key={m.k} className="p-3 rounded-xl bg-white shadow-sm border border-slate-200">
+            <p className="text-[10px] text-slate-500">{m.k}</p>
+            <p className="text-sm font-bold text-slate-900">{m.v}</p>
           </div>
         ))}
       </div>
-      <div className="flex items-end gap-2 h-28 p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
+      <div className="flex items-end gap-2 h-28 p-3 rounded-xl bg-white shadow-sm border border-slate-200">
         {bars.map((h, i) => (
           <div key={i} className="flex-1 rounded-t-md bg-gradient-to-t from-violet-600/60 to-fuchsia-400/80" style={{ height: `${h}%` }} />
         ))}
@@ -230,15 +230,15 @@ export default function CrmModulesSection() {
               <div className={reverse ? "lg:order-2" : ""}>
                 <div className="inline-flex items-center gap-2 mb-4">
                   <span className={`w-9 h-9 rounded-xl bg-gradient-to-br ${m.accent} flex items-center justify-center shadow-lg`}>
-                    <Icon className="w-4.5 h-4.5 text-white" />
+                    <Icon className="w-4.5 h-4.5 text-slate-900" />
                   </span>
-                  <span className="text-xs font-bold uppercase tracking-widest text-slate-400">{m.label}</span>
+                  <span className="text-xs font-bold uppercase tracking-widest text-slate-500">{m.label}</span>
                 </div>
-                <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight mb-4">{m.title}</h2>
-                <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">{m.description}</p>
+                <h2 className="text-2xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-4">{m.title}</h2>
+                <p className="text-slate-500 text-sm sm:text-base leading-relaxed mb-6">{m.description}</p>
                 <ul className="space-y-2.5 mb-7">
                   {m.points.map((p) => (
-                    <li key={p} className="flex items-center gap-2.5 text-sm text-slate-300">
+                    <li key={p} className="flex items-center gap-2.5 text-sm text-slate-600">
                       <span className="w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-400 flex items-center justify-center">
                         <Check className="w-3 h-3" />
                       </span>
@@ -249,7 +249,7 @@ export default function CrmModulesSection() {
                 <button
                   id={`open-${m.id}`}
                   onClick={() => openModule(m.tab)}
-                  className="group inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] rounded-xl transition-all hover:-translate-y-0.5 cursor-pointer"
+                  className="group inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-slate-900 bg-white shadow-sm hover:bg-slate-50 border border-slate-200 rounded-xl transition-all hover:-translate-y-0.5 cursor-pointer"
                 >
                   Open {m.label}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -260,16 +260,16 @@ export default function CrmModulesSection() {
               <div className={reverse ? "lg:order-1" : ""}>
                 <div className="relative">
                   <div className={`absolute -inset-4 rounded-[32px] bg-gradient-to-br ${m.accent} opacity-[0.12] blur-2xl -z-10`} />
-                  <div className="rounded-3xl bg-[#0B0F1E]/90 border border-white/[0.08] p-5 sm:p-6 shadow-2xl backdrop-blur-xl">
+                  <div className="rounded-3xl bg-slate-50 border border-slate-200 p-5 sm:p-6 shadow-2xl backdrop-blur-xl">
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-2">
-                        <Icon className="w-4 h-4 text-slate-300" />
-                        <span className="text-xs font-semibold text-white">{m.label}</span>
+                        <Icon className="w-4 h-4 text-slate-600" />
+                        <span className="text-xs font-semibold text-slate-900">{m.label}</span>
                       </div>
                       <div className="flex gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-white/15" />
-                        <span className="w-2 h-2 rounded-full bg-white/15" />
-                        <span className="w-2 h-2 rounded-full bg-white/15" />
+                        <span className="w-2 h-2 rounded-full bg-slate-200" />
+                        <span className="w-2 h-2 rounded-full bg-slate-200" />
+                        <span className="w-2 h-2 rounded-full bg-slate-200" />
                       </div>
                     </div>
                     {m.preview}
