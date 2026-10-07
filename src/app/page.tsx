@@ -14,6 +14,7 @@ import DeploymentSection from "../components/landing/DeploymentSection";
 import FinalCtaSection from "../components/landing/FinalCtaSection";
 import Footer from "../components/landing/Footer";
 import ContactDemoModal from "../components/landing/ContactDemoModal";
+import LoginModal from "../components/landing/LoginModal";
 import { useLandingStore } from "../store/useLandingStore";
 import CrmDashboard from "../CrmDashboard";
 import { ArrowLeft } from "lucide-react";
@@ -95,6 +96,9 @@ export default function HomePage() {
 
       {/* Interactive Modal for Request Blueprint / Demo */}
       <ContactDemoModal />
+
+      {/* Login / Sign in Modal */}
+      <LoginModal />
     </main>
   );
 }

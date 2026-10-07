@@ -17,6 +17,8 @@ interface LandingState {
   setDeployCopied: (copied: boolean) => void;
   demoModalOpen: boolean;
   setDemoModalOpen: (open: boolean) => void;
+  loginModalOpen: boolean;
+  setLoginModalOpen: (open: boolean) => void;
 }
 
 export const useLandingStore = create<LandingState>((set) => ({
@@ -32,4 +34,6 @@ export const useLandingStore = create<LandingState>((set) => ({
   setDeployCopied: (copied) => set({ deployCopied: copied }),
   demoModalOpen: false,
   setDemoModalOpen: (open) => set({ demoModalOpen: open }),
+  loginModalOpen: false,
+  setLoginModalOpen: (open) => set({ loginModalOpen: open }),
 }));
