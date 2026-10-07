@@ -1,0 +1,787 @@
+{
+  "info": {
+    "name": "CRM Backend API",
+    "_postman_id": "crm-backend-collection-v1",
+    "description": "Production API Collection for CRM Backend (Next.js 15). Covers Auth, Customers, Leads, Deals, Softphone Telephony, Unified Inbox, Autonomous AI Agents, Copilot RAG, Simulator, Workflows, Radar Intelligence, Coaching, and Infrastructure.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api/v1",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication & Tenants",
+      "item": [
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            },
+            "description": "Fetches currently authenticated user identity, role, and avatar."
+          }
+        },
+        {
+          "name": "Get Organizations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/organizations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "organizations"
+              ]
+            },
+            "description": "Lists active tenant organizations available for the user."
+          }
+        },
+        {
+          "name": "Switch Organization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orgId\": \"org_global\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/switch-org",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "switch-org"
+              ]
+            },
+            "description": "Switches current tenant organization context."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Get All Customers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/customers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            },
+            "description": "Returns all customer profiles with ARR, stage, sentiment, and health telemetry."
+          }
+        },
+        {
+          "name": "Get Customer by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/customers/cust_rahul",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers",
+                "cust_rahul"
+              ]
+            },
+            "description": "Retrieves specific customer details by ID."
+          }
+        },
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ananya Deshmukh\",\n  \"company\": \"Zenith Cloud Solutions\",\n  \"email\": \"ananya@zenith.io\",\n  \"phone\": \"+91 99887 76655\",\n  \"arr\": 7200000\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/customers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            },
+            "description": "Registers a new customer record."
+          }
+        },
+        {
+          "name": "Update Customer Health Score",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"healthScore\": 92\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/customers/cust_rahul/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "customers",
+                "cust_rahul",
+                "health"
+              ]
+            },
+            "description": "Updates health score for customer retention telemetry."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Leads",
+      "item": [
+        {
+          "name": "Get All Leads",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/leads",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "leads"
+              ]
+            },
+            "description": "Lists all pipeline leads with priority tiers and intent scores."
+          }
+        },
+        {
+          "name": "Get Lead by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/leads/lead_priya",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "leads",
+                "lead_priya"
+              ]
+            },
+            "description": "Gets lead details by ID."
+          }
+        },
+        {
+          "name": "Create Inbound Lead",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rohan Kapoor\",\n  \"company\": \"Titan Enterprises\",\n  \"email\": \"rohan@titan.in\",\n  \"phone\": \"+91 91234 56789\",\n  \"value\": 6500000,\n  \"score\": 88,\n  \"notes\": \"Interested in Q4 enterprise rollout\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/leads",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "leads"
+              ]
+            },
+            "description": "Creates and scores a new incoming lead."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Deals & Pipeline",
+      "item": [
+        {
+          "name": "Get All Deals",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/deals",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "deals"
+              ]
+            },
+            "description": "Fetches active pipeline deals with close dates and win probabilities."
+          }
+        },
+        {
+          "name": "Get Deal by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/deals/deal_1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "deals",
+                "deal_1"
+              ]
+            },
+            "description": "Retrieves details of a specific deal."
+          }
+        },
+        {
+          "name": "Create Deal",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Annual AI Automation License\",\n  \"company\": \"Bajaj Technologies\",\n  \"customerName\": \"Sanjay Bajaj\",\n  \"amount\": 8500000,\n  \"stage\": \"PROPOSAL\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/deals",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "deals"
+              ]
+            },
+            "description": "Creates a new deal opportunity."
+          }
+        },
+        {
+          "name": "Update Deal Stage",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stage\": \"NEGOTIATION\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/deals/deal_1/stage",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "deals",
+                "deal_1",
+                "stage"
+              ]
+            },
+            "description": "Transitions deal to another stage in the pipeline."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Calls & Softphone Telephony",
+      "item": [
+        {
+          "name": "Get Latest Call Recording & Transcription",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/calls/latest",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calls",
+                "latest"
+              ]
+            },
+            "description": "Retrieves latest call recording with AI sentiment analysis and transcript."
+          }
+        },
+        {
+          "name": "Start Outbound Call",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contactId\": \"cust_rahul\",\n  \"toNumber\": \"+91 98201 44521\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/calls/start",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "calls",
+                "start"
+              ]
+            },
+            "description": "Initiates softphone dialer WebRTC call."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Unified Inbox",
+      "item": [
+        {
+          "name": "Get All Conversations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/inbox/conversations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "inbox",
+                "conversations"
+              ]
+            },
+            "description": "Fetches multi-channel conversations (Email, WhatsApp, Chat)."
+          }
+        },
+        {
+          "name": "Send Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": \"We reviewed the contract and sent the updated terms for signature.\",\n  \"channel\": \"email\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/inbox/conversations/conv_1/messages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "inbox",
+                "conversations",
+                "conv_1",
+                "messages"
+              ]
+            },
+            "description": "Appends message to an active conversation thread."
+          }
+        },
+        {
+          "name": "Generate AI Reply Draft",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"recipientName\": \"Vikram\",\n  \"context\": \"Contract discount discussion\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/inbox/ai-reply",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "inbox",
+                "ai-reply"
+              ]
+            },
+            "description": "Synthesizes an intelligent context-aware reply draft."
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Agents & Copilot",
+      "item": [
+        {
+          "name": "Synthesize Autonomous Agent Plan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"prompt\": \"Scan for at-risk accounts with over 7 days of silence and dispatch follow-up alerts\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/agent/plan",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "agent",
+                "plan"
+              ]
+            },
+            "description": "Synthesizes a 5-step autonomous action plan with audit logs."
+          }
+        },
+        {
+          "name": "Execute Autonomous Agent Plan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"executionId\": \"agent_demo_101\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/agent/execute",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "agent",
+                "execute"
+              ]
+            },
+            "description": "Executes an approved plan through autonomous workers."
+          }
+        },
+        {
+          "name": "Query AI Copilot",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"What is our projected pipeline revenue for Q4?\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/copilot/query",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "copilot",
+                "query"
+              ]
+            },
+            "description": "Answers natural language queries grounded in CRM CRM telemetry."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Revenue Simulator",
+      "item": [
+        {
+          "name": "Simulate Revenue Projection Curve",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hiringDelta\": 2,\n  \"discountDelta\": 5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/simulator/project",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "simulator",
+                "project"
+              ]
+            },
+            "description": "Simulates revenue curve impact based on rep hiring count and discounting."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Radar & Opportunity Intelligence",
+      "item": [
+        {
+          "name": "Get Radar Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/radar/metrics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "radar",
+                "metrics"
+              ]
+            },
+            "description": "Fetches live velocity, churn risk alerts, and expansion targets."
+          }
+        },
+        {
+          "name": "Execute Radar Action",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/radar/actions/act_churn_acme/execute",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "radar",
+                "actions",
+                "act_churn_acme",
+                "execute"
+              ]
+            },
+            "description": "Dispatches proactive mitigation action for detected radar alert."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Automation Workflows",
+      "item": [
+        {
+          "name": "List All Workflows",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/workflows",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "workflows"
+              ]
+            },
+            "description": "Lists configured trigger-action automation workflows."
+          }
+        },
+        {
+          "name": "Simulate Workflow Execution",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/workflows/wf_churn_risk/simulate",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "workflows",
+                "wf_churn_risk",
+                "simulate"
+              ]
+            },
+            "description": "Runs Monte Carlo dry-run simulation of a workflow to test reliability."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin, Security & Infrastructure",
+      "item": [
+        {
+          "name": "System Cluster Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/infra/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "infra",
+                "health"
+              ]
+            },
+            "description": "Health checks across DB, Redis, RabbitMQ, and microservices."
+          }
+        },
+        {
+          "name": "Storage & IOPS Metrics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/storage/metrics",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "storage",
+                "metrics"
+              ]
+            },
+            "description": "Fetches IOPS, throughput, and disk utilization telemetry."
+          }
+        },
+        {
+          "name": "Immutable Audit Logs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/admin/audit-logs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                "audit-logs"
+              ]
+            },
+            "description": "Fetches security and audit logs with IP, user, and action tags."
+          }
+        },
+        {
+          "name": "RBAC Role Permissions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/admin/roles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "admin",
+                "roles"
+              ]
+            },
+            "description": "Lists role-based access control matrix."
+          }
+        },
+        {
+          "name": "Notifications",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/notifications",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "notifications"
+              ]
+            },
+            "description": "Lists real-time user notification events."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sales Coaching",
+      "item": [
+        {
+          "name": "List Rep Coaching Profiles",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/coaching/reps",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "coaching",
+                "reps"
+              ]
+            },
+            "description": "Returns rep skill ratings, win-rates, objection handling, and AI advice."
+          }
+        }
+      ]
+    }
+  ]
+}
