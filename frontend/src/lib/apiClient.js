@@ -2,7 +2,7 @@
  * API client to communicate with the CRM Backend server.
  * Points to the backend server (default http://localhost:3000).
  */
-export const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+export const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
 
 /**
  * Health check endpoint test
